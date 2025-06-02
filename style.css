@@ -1,0 +1,245 @@
+/* Set a light background color for the whole page */
+body {
+  background-color: #f4f8fb;
+  font-family: Arial, sans-serif; /* Easy-to-read font */
+  margin: 0;
+  padding: 0;
+}
+
+/* --- HERO SECTION: Intel Look and Feel --- */
+header {
+  background: linear-gradient(120deg, #0071c5 60%, #00a6d6 100%); /* Intel blue gradient */
+  color: white;
+  padding: 50px 0 40px 0;
+  text-align: center;
+  box-shadow: 0 4px 24px 0 rgba(0,113,197,0.10);
+  position: relative;
+}
+
+header img {
+  width: 120px;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.10));
+}
+
+header h1 {
+  margin: 12px 0 8px 0;
+  font-size: 2.5em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+header p {
+  margin: 0 auto;
+  max-width: 540px;
+  font-size: 1.18em;
+  font-weight: 400;
+  background: rgba(255,255,255,0.10);
+  border-radius: 8px;
+  padding: 12px 18px;
+  box-shadow: 0 1px 6px 0 rgba(0,113,197,0.08);
+}
+
+/* Add a subtle Intel circuit pattern (optional, for effect) */
+header::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0; top: 0;
+  background: url('https://www.intel.com/content/dam/www/global/brand-assets/brand-elements/brand-circuit-pattern.svg') repeat;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+}
+
+header > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Timeline section styles */
+section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; /* Prevent wrapping to new lines */
+  overflow-x: auto;  /* Enable horizontal scroll */
+  scroll-snap-type: x mandatory; /* Enable snap scrolling */
+  gap: 20px; /* Space between cards */
+  padding: 30px 10px;
+  /* Keep vertical centering for cards */
+  align-items: flex-start;
+}
+
+/* Each timeline card */
+section > div {
+  scroll-snap-align: start;
+  min-width: 250px; /* Ensure cards don't shrink */
+  max-width: 250px;
+  flex: 0 0 250px;
+  /* Keep previous card styles */
+  background-color: white;
+  border: 1px solid #d1e3f0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effect */
+}
+
+/* Make cards pop a bit when hovered */
+section > div:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(0,113,197,0.15);
+}
+
+/* Card headings */
+section h2 {
+  color: #0071c5;
+  margin: 0 0 5px 0;
+  font-size: 1.3em;
+}
+
+section h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.1em;
+}
+
+/* Card images */
+section img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/* Card text */
+section p {
+  font-size: 0.98em;
+  color: #333;
+}
+
+/* Timeline instruction at the bottom */
+body > p {
+  text-align: center;
+  color: #555;
+  margin: 20px 0 30px 0;
+  font-style: italic;
+}
+
+/* Make the card 5 image always display at 250x100 pixels */
+img[src="img/5.jpg"] {
+  width: 250px;      /* Set width */
+  height: 100px;     /* Set height */
+  object-fit: cover; /* Crop if needed to fill the box */
+}
+
+/* Make the card 6 image always display at 250x100 pixels */
+img[src="img/6.png"] {
+  width: 250px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* Make the card 7 image always display at 250x100 pixels */
+img[src="img/7.png"] {
+  width: 250px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* Make the card 8 image always display at 250x100 pixels */
+img[src="img/8.png"] {
+  width: 250px;
+  height: 100px;
+  object-fit: cover;
+  object-position: top; /* Show the top of the image */
+  margin-top: 0; /* Remove any negative margin */
+}
+
+/* Make the card 9 image always display at 250x100 pixels */
+img[src="img/9.png"] {
+  width: 250px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* Optional: Hide vertical scrollbar for a cleaner look */
+section::-webkit-scrollbar {
+  height: 8px;
+}
+section::-webkit-scrollbar-thumb {
+  background: #d1e3f0;
+  border-radius: 4px;
+}
+
+/* Responsive: allow vertical stacking on small screens */
+@media (max-width: 600px) {
+  section {
+    flex-direction: column;
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+  section > div {
+    min-width: unset;
+    max-width: unset;
+    flex: 1 1 auto;
+  }
+}
+
+/* Enable horizontal scroll with mouse wheel using a simple script for beginners */
+/* This script allows users to scroll the timeline horizontally with their mouse wheel */
+
+/* Add this script at the end of the body in index.html */
+
+/* --- TIMELINE CARD INTERACTIVITY --- */
+
+/* Hide the card text by default */
+section > div p {
+  display: none; /* Hide the paragraph (card text) */
+}
+
+/* Show the card text only when hovering over the card */
+section > div:hover p {
+  display: block; /* Show the paragraph on hover */
+}
+
+/* Hide the image when hovering over the card */
+section > div:hover img {
+  opacity: 0; /* Fade out the image */
+  transition: opacity 0.3s;
+}
+
+/* Make sure the image is visible by default */
+section > div img {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+/* Change the card background color on hover */
+section > div:hover {
+  background-color: #222; /* Dark gray background */
+  color: #fff; /* Make text white for contrast */
+}
+
+/* Make sure headings and text are white on hover for readability */
+section > div:hover h2,
+section > div:hover h3,
+section > div:hover p {
+  color: #fff;
+}
+
+/* Keep card size fixed and image centered */
+section > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 350px; /* Ensures enough height for text on hover */
+}
+
+/* Add a comment for students */
+/*
+  The code above hides the card text by default and only shows it when you hover over a card.
+  The image fades out and the background turns dark gray on hover.
+  The card size stays the same, and everything is centered for a modern look.
+*/

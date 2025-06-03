@@ -1,14 +1,14 @@
 /* Set a light background color for the whole page */
 body {
   background-color: #f4f8fb;
-  font-family: Arial, sans-serif; /* Easy-to-read font */
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
 /* --- HERO SECTION: Intel Look and Feel --- */
 header {
-  background: linear-gradient(120deg, #0071c5 60%, #00a6d6 100%); /* Intel blue gradient */
+  background: linear-gradient(120deg, #0071c5 60%, #00a6d6 100%);
   color: white;
   padding: 50px 0 40px 0;
   text-align: center;
@@ -57,39 +57,44 @@ header > div {
   z-index: 1;
 }
 
-/* Timeline section styles */
+/* --- TIMELINE SECTION --- */
 section {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap; /* Prevent wrapping to new lines */
-  overflow-x: auto;  /* Enable horizontal scroll */
-  scroll-snap-type: x mandatory; /* Enable snap scrolling */
-  gap: 20px; /* Space between cards */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
   padding: 30px 10px;
-  /* Keep vertical centering for cards */
   align-items: flex-start;
 }
 
 /* Each timeline card */
 section > div {
   scroll-snap-align: start;
-  min-width: 250px; /* Ensure cards don't shrink */
+  min-width: 250px;
   max-width: 250px;
   flex: 0 0 250px;
-  /* Keep previous card styles */
   background-color: white;
   border: 1px solid #d1e3f0;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   padding: 15px;
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effect */
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 350px;
 }
 
 /* Make cards pop a bit when hovered */
 section > div:hover {
   transform: translateY(-5px) scale(1.03);
   box-shadow: 0 6px 16px rgba(0,113,197,0.15);
+  background-color: #222;
+  color: #fff;
 }
 
 /* Card headings */
@@ -110,12 +115,25 @@ section img {
   height: auto;
   border-radius: 4px;
   margin-bottom: 10px;
+  opacity: 1;
+  transition: opacity 0.3s;
 }
 
 /* Card text */
 section p {
   font-size: 0.98em;
   color: #333;
+}
+
+/* Hide the card text by default */
+section > div p {
+  display: none;
+}
+
+/* Show the card text only when hovering over the card */
+section > div:hover p {
+  display: block;
+  color: #fff; /* Make card text white on hover */
 }
 
 /* Timeline instruction at the bottom */
@@ -127,35 +145,13 @@ body > p {
 }
 
 /* Make the card 5 image always display at 250x100 pixels */
-img[src="img/5.jpg"] {
-  width: 250px;      /* Set width */
-  height: 100px;     /* Set height */
-  object-fit: cover; /* Crop if needed to fill the box */
-}
-
+img[src="img/5.jpg"],
 /* Make the card 6 image always display at 250x100 pixels */
-img[src="img/6.png"] {
-  width: 250px;
-  height: 100px;
-  object-fit: cover;
-}
-
+img[src="img/6.png"],
 /* Make the card 7 image always display at 250x100 pixels */
-img[src="img/7.png"] {
-  width: 250px;
-  height: 100px;
-  object-fit: cover;
-}
-
+img[src="img/7.png"],
 /* Make the card 8 image always display at 250x100 pixels */
-img[src="img/8.png"] {
-  width: 250px;
-  height: 100px;
-  object-fit: cover;
-  object-position: top; /* Show the top of the image */
-  margin-top: 0; /* Remove any negative margin */
-}
-
+img[src="img/8.png"],
 /* Make the card 9 image always display at 250x100 pixels */
 img[src="img/9.png"] {
   width: 250px;
@@ -163,7 +159,12 @@ img[src="img/9.png"] {
   object-fit: cover;
 }
 
-/* Optional: Hide vertical scrollbar for a cleaner look */
+img[src="img/8.png"] {
+  object-position: top; /* Show the top of the image */
+  margin-top: 0; /* Remove any negative margin */
+}
+
+/* Hide horizontal scrollbar for a cleaner look */
 section::-webkit-scrollbar {
   height: 8px;
 }
@@ -186,60 +187,167 @@ section::-webkit-scrollbar-thumb {
   }
 }
 
-/* Enable horizontal scroll with mouse wheel using a simple script for beginners */
-/* This script allows users to scroll the timeline horizontally with their mouse wheel */
-
-/* Add this script at the end of the body in index.html */
-
-/* --- TIMELINE CARD INTERACTIVITY --- */
-
-/* Hide the card text by default */
-section > div p {
-  display: none; /* Hide the paragraph (card text) */
-}
-
-/* Show the card text only when hovering over the card */
-section > div:hover p {
-  display: block; /* Show the paragraph on hover */
-}
-
-/* Hide the image when hovering over the card */
-section > div:hover img {
-  opacity: 0; /* Fade out the image */
-  transition: opacity 0.3s;
-}
-
-/* Make sure the image is visible by default */
-section > div img {
-  opacity: 1;
-  transition: opacity 0.3s;
-}
-
-/* Change the card background color on hover */
-section > div:hover {
-  background-color: #222; /* Dark gray background */
-  color: #fff; /* Make text white for contrast */
-}
-
-/* Make sure headings and text are white on hover for readability */
-section > div:hover h2,
-section > div:hover h3,
-section > div:hover p {
-  color: #fff;
-}
-
-/* Keep card size fixed and image centered */
-section > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 350px; /* Ensures enough height for text on hover */
-}
-
-/* Add a comment for students */
+/* --- STUDENT COMMENT --- */
 /*
   The code above hides the card text by default and only shows it when you hover over a card.
   The image fades out and the background turns dark gray on hover.
   The card size stays the same, and everything is centered for a modern look.
+*/
+
+/* Center the newsletter form section */
+section[aria-label="Newsletter Subscription"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Center the footer content */
+footer.bg-light {
+  text-align: center !important;
+}
+footer .row.align-items-center {
+  justify-content: center;
+}
+footer nav[aria-label="Footer links"] {
+  text-align: center !important;
+  display: inline-block;
+}
+
+/* --- INFORMATION SECTION (Three Columns, always side by side using flexbox) --- */
+/*
+  Use flexbox to keep the information columns side by side on large screens.
+  On small screens, stack the columns vertically for better readability.
+*/
+.info-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px; /* Space between columns */
+}
+
+/* Responsive: stack columns vertically on small screens */
+@media (max-width: 800px) {
+  .info-flex {
+    flex-direction: column;
+    gap: 0;
+  }
+  .info-col {
+    margin-bottom: 24px;
+  }
+  .info-col:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.info-col {
+  flex: 1 1 0;
+  min-width: 0;
+  /* Optional: add some horizontal padding */
+  padding: 0 10px;
+}
+
+/*
+  The columns in the information section are always side by side.
+  We remove bottom margin so they stay aligned.
+*/
+.information-section .row > div {
+  margin-bottom: 0;
+}
+
+/* 
+  No card styles here. 
+  This section just uses regular text and Bootstrap's grid for layout.
+*/
+.information-section h2 {
+  color: #0071c5; /* Use Intel blue for headings */
+  font-family: Arial, sans-serif;
+  margin-bottom: 10px;
+}
+
+/* Center the main header in the information section */
+.information-section > h2 {
+  text-align: center;
+}
+
+.information-section p {
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  margin-bottom: 16px;
+}
+
+/* --- INFORMATION SECTION DISTINCT STYLE --- */
+/*
+  The .info-bg class gives the information section a different background,
+  rounded corners, and a border to make it stand out from other sections.
+*/
+.info-bg {
+  background-color: #eaf3fa; /* Light blue background */
+  border: 1px solid #d1e3f0; /* Subtle border */
+  border-radius: 14px;        /* Rounded corners */
+  box-shadow: 0 2px 12px rgba(0,113,197,0.06); /* Soft shadow */
+  padding: 36px 18px;         /* Extra padding inside */
+  margin-top: 40px;           /* More space above */
+  margin-bottom: 40px;        /* More space below */
+}
+
+/* --- NEWSLETTER FORM SECTION STYLE --- */
+/*
+  The .newsletter-bg class gives the newsletter section a light green background,
+  rounded corners, and a soft shadow to make it stand out and feel inviting.
+*/
+.newsletter-bg {
+  background-color: #e6f9ed; /* Light green background */
+  border: 1px solid #b7e4c7; /* Soft green border */
+  border-radius: 14px;       /* Rounded corners */
+  box-shadow: 0 2px 12px rgba(0, 180, 90, 0.07); /* Soft green shadow */
+  padding: 36px 18px;        /* Extra padding inside */
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+/* --- NEWSLETTER FORM LAYOUT IMPROVEMENT --- */
+/*
+  The .newsletter-form class centers the form and adds spacing.
+  The input and button are stacked and centered for a clean, simple look.
+*/
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Space between input and button */
+  margin-top: 10px;
+}
+
+/* Make the input field a bit wider on larger screens */
+.newsletter-form input[type="email"] {
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+}
+
+/* Make the subscribe button a bit larger and centered */
+.newsletter-form button[type="submit"] {
+  min-width: 120px;
+  font-size: 1.1em;
+}
+
+/* Visually hidden class for accessibility (Bootstrap provides this, but here for clarity) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  border: 0 !important;
+}
+
+/*
+  The visually-hidden class above hides elements visually but keeps them accessible to screen readers.
+  This is used for the email label in the newsletter form.
 */
